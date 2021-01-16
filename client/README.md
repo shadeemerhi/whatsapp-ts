@@ -6,5 +6,5 @@ This project was created following a [tutorial](https://www.youtube.com/watch?v=
 
 - React
 - Socket IO
-- Material UI
+- React Bootstrap
 - TypeScript
