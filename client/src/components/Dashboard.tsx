@@ -6,6 +6,8 @@ interface Props {
 
 export default function Dashboard(props: Props) {
   return (
-    <Sidebar id={props.id}/>
+    <div className="d-flex" style={{ height: '100vh' }}>
+      <Sidebar id={props.id}/>
+    </div>
   )
 }
