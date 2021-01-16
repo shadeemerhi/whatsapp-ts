@@ -1,4 +1,4 @@
-
+import Sidebar from './Sidebar';
 
 interface Props {
   id: string
@@ -6,8 +6,6 @@ interface Props {
 
 export default function Dashboard(props: Props) {
   return (
-    <div>
-      {props.id}
-    </div>
+    <Sidebar id={props.id}/>
   )
 }
