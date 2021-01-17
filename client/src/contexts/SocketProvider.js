@@ -21,6 +21,7 @@ export function SocketProvider({ id, children }) {
     setSocket(newSocket);
 
     return () => {
+      if(!socket) return;
       socket.emit('disconnect');
       socket.off();
     }

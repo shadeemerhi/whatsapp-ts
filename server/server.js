@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-// const cors = require('cors');
 const http = require('http');
 const socketio = require('socket.io');
 
@@ -13,8 +12,6 @@ const io = socketio(server, {
 })
 
 const PORT = 5000;
-// app.use(cors({ origin: 'http:localhost:3000', credentials: true }));
-
 io.on('connection', socket => {
 
   console.log('new connection')
