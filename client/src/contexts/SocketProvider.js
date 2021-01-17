@@ -3,6 +3,9 @@ import io from 'socket.io-client';
 
 const SocketContext = React.createContext();
 
+const ENDPOINT = process.env.REACT_APP_SOCKET_URL;
+console.log(ENDPOINT)
+
 export function useSocket() {
   return useContext(SocketContext);
 }
@@ -12,7 +15,7 @@ export function SocketProvider({ id, children }) {
   const [socket, setSocket] = useState();
 
   useEffect(() => {
-    const newSocket = io('http://localhost:5000', 
+    const newSocket = io(ENDPOINT, 
     { query: { id } })
 
     setSocket(newSocket);
@@ -21,6 +24,7 @@ export function SocketProvider({ id, children }) {
   }, [id]);
 
 
+  console.log(socket);
 
   return (
     <SocketContext.Provider value={socket}>
