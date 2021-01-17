@@ -5,10 +5,15 @@ const http = require('http');
 const socketio = require('socket.io');
 
 const server = http.createServer(app);
-const io = socketio(server, { wsEngine: 'ws' })
+const io = socketio(server, {
+  cors: {
+    // origin: true, 
+    // methods: ['GET', 'POST']
+  }
+})
 
 const PORT = 5000;
-// app.use(cors({ origin: true, credentials: true }));
+// app.use(cors({ origin: 'http:localhost:3000', credentials: true }));
 
 io.on('connection', socket => {
 
@@ -27,6 +32,10 @@ io.on('connection', socket => {
       })
     })
   })
+
+  socket.on("disconnect", () => {
+    console.log("Disconnected");
+  });
 })
 
 server.listen(PORT, () => {
