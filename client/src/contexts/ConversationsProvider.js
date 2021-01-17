@@ -8,12 +8,12 @@ export function useConversations() {
   return useContext(ConversationsContext);
 }
 
-export function ConversationsProvider({ children }) {
+export function ConversationsProvider({ id, children }) {
   const [conversations, setConversations] = useLocalStorage('conversations', []);
   const [selectedConversationIndex, setSelectedConversationIndex] = useState(0);
   const { contacts } = useContacts();
 
-    function createConversation(recipients) {
+  function createConversation(recipients) {
     setConversations(prev => {
       return [...prev, { recipients, messages: [] }];
     })
@@ -31,9 +31,19 @@ export function ConversationsProvider({ children }) {
     return {...conversation, recipients, selected }
   })
 
+  function addMessageToConversation({ recipients, text, sender }) {
+
+  }
+
+  function sendMessage(recipients, text) {
+    addMessageToConversation({ recipients, text, sender: id })
+  }
+
+
   const value = {
     conversations: formattedConverations,
     selectedConversation: formattedConverations[selectedConversationIndex],
+    sendMessage,
     selectedConversationIndex: setSelectedConversationIndex,
     createConversation
   }

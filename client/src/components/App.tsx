@@ -11,7 +11,7 @@ function App() {
 
   return (
     <ContactsProvider>
-      <ConversationsProvider>
+      <ConversationsProvider id={id}>
         {id ? <Dashboard id={id}/>: <Login onSubmitId={setId}/>}
       </ConversationsProvider>
     </ContactsProvider>
