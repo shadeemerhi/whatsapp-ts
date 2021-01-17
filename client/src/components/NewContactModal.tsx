@@ -11,8 +11,13 @@ export default function NewContactModal(props: Props) {
   const [name, setName] = useState('');
 
   const handleSubmit = function(e:any) {
+    e.preventDefault();
 
+    // createContact(id, name);
+    props.closeModal();
   }
+
+
 
   return (
     <>
@@ -32,6 +37,7 @@ export default function NewContactModal(props: Props) {
             <Form.Label>Name</Form.Label>
             <Form.Control type="text" value={name} onChange={event => setName(event.target.value)} required />
           </Form.Group>
+          <Button type="submit">Create</Button>
         </Form>
       </Modal.Body>
     </>
