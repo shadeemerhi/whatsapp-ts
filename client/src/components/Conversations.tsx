@@ -1,9 +1,17 @@
-import React from 'react'
+import { ListGroup } from 'react-bootstrap';
+import { useConversations } from '../contexts/ConversationsProvider';
 
-export default function Conversations() {
+export default function Contacts() {
+
+  const { conversations } = useConversations();
+
   return (
-    <div>
-      Conversations
-    </div>
+    <ListGroup variant="flush">
+      {conversations.map((conversation:any, index:number) => {
+        return <ListGroup.Item key={index}>
+          {conversation.recipients.map((recipient:any) => recipient.name).join(', ')}
+        </ListGroup.Item>
+      })}
+    </ListGroup>
   )
 }
