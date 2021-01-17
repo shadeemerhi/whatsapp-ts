@@ -20,14 +20,17 @@ export function SocketProvider({ id, children }) {
 
     setSocket(newSocket);
 
-    return () => newSocket.close();
+    return () => {
+      socket.emit('disconnect');
+      socket.off();
+    }
   }, [id]);
 
 
   console.log(socket);
 
   return (
-    <SocketContext.Provider value={socket}>
+    <SocketContext.Provider value={{ socket }}>
       {children}
     </SocketContext.Provider>
   )
