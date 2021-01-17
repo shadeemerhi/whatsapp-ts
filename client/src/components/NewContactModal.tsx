@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
+import { useContacts } from '../contexts/ContactsProvider';
 
 interface Props {
   closeModal: () => void;
@@ -9,11 +10,12 @@ export default function NewContactModal(props: Props) {
 
   const [id, setId] = useState('');
   const [name, setName] = useState('');
+  const { createContact } = useContacts();
 
   const handleSubmit = function(e:any) {
     e.preventDefault();
 
-    // createContact(id, name);
+    createContact(id, name);
     props.closeModal();
   }
 
